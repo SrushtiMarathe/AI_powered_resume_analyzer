@@ -30,40 +30,7 @@ uploaded = files.upload()  # use the UI to upload resume.pdf and optional jd.txt
 # Uploaded files will be in /content/
 ```
 
-Simple analyzer usage (example — adapt to your repo's API)
-```python
-import json
-# Replace with your real analyzer function import
-# from resume_analyzer import analyze_resume
 
-# Example placeholder function (delete if you have real code)
-def analyze_resume(resume_path, job_description_path=None):
-    # Minimal dummy output — replace with real analysis
-    return {
-        "candidate": {"name": "Unknown"},
-        "scores": {"overall": 75},
-        "recommendations": ["Use bullet points", "Include metrics"]
-    }
-
-# Paths to uploaded files (adjust names as needed)
-resume_path = "/content/resume.pdf"    # or resume.docx / resume.txt
-jd_path = "/content/jd.txt"            # optional
-
-result = analyze_resume(resume_path, job_description_path=jd_path if jd_path in uploaded else None)
-print(json.dumps(result, indent=2))
-
-# Save and download report
-with open("report.json", "w") as f:
-    json.dump(result, f, indent=2)
-
-files.download("report.json")
-```
-
-If you need OpenAI (or other) API keys in Colab
-```python
-import os
-os.environ["OPENAI_API_KEY"] = "sk-..."
-# Or use Colab secrets manager / runtime prompt to set securely
 ```
 
 Notes & tips
